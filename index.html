@@ -1,6 +1,3 @@
-<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Especialistas en Inyectores y Bombas Diésel | México</title> <!-- Bootstrap 5 CSS --> <link href="https://cdn.jsdelivr.net/npm
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,776 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
- 
-    <style>
-        :root {
-            --red: #e01c1c;
-            --red-dark: #a80e0e;
-            --red-glow: rgba(224, 28, 28, 0.35);
-            --black: #0a0a0a;
-            --dark: #111111;
-            --dark2: #1a1a1a;
-            --steel: #2a2a2a;
-            --gray: #888;
-            --light: #f0f0f0;
-            --white: #ffffff;
-            --font-head: 'Barlow Condensed', sans-serif;
-            --font-body: 'Barlow', sans-serif;
-        }
- 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-        html { scroll-behavior: smooth; }
- 
-        body {
-            font-family: var(--font-body);
-            background: var(--black);
-            color: var(--light);
-            overflow-x: hidden;
-            cursor: none;
-        }
- 
-        /* ── CURSOR ── */
-        .cursor {
-            position: fixed;
-            width: 12px; height: 12px;
-            background: var(--red);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: transform 0.08s, width 0.2s, height 0.2s;
-        }
-        .cursor-ring {
-            position: fixed;
-            width: 36px; height: 36px;
-            border: 1.5px solid rgba(224,28,28,0.6);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: transform 0.18s, width 0.2s, height 0.2s;
-        }
-        body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 20px; height: 20px; }
-        body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 56px; height: 56px; }
- 
-        /* ── NAV ── */
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 20px 60px;
-            transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s;
-        }
-        nav.scrolled {
-            background: rgba(10,10,10,0.92);
-            backdrop-filter: blur(20px);
-            padding: 14px 60px;
-            border-bottom: 1px solid rgba(224,28,28,0.2);
-        }
- 
-        .nav-logo {
-            font-family: var(--font-head);
-            font-size: 28px; font-weight: 900;
-            letter-spacing: 1px; text-decoration: none;
-            color: var(--white);
-        }
-        .nav-logo span { color: var(--red); }
- 
-        .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
-        .nav-links a {
-            font-family: var(--font-head);
-            font-size: 15px; font-weight: 600;
-            letter-spacing: 2px; text-transform: uppercase;
-            text-decoration: none; color: rgba(255,255,255,0.7);
-            position: relative; transition: color 0.2s;
-        }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -4px; left: 0;
-            width: 0; height: 2px; background: var(--red);
-            transition: width 0.3s;
-        }
-        .nav-links a:hover { color: var(--white); }
-        .nav-links a:hover::after { width: 100%; }
- 
-        .nav-cta {
-            background: var(--red);
-            color: var(--white) !important;
-            padding: 10px 26px;
-            clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-            transition: background 0.2s !important;
-        }
-        .nav-cta::after { display: none !important; }
-        .nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
- 
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; background: none; border: none; padding: 4px; }
-        .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); transition: 0.3s; }
- 
-        /* ── HERO ── */
-        #hero {
-            height: 100vh; min-height: 700px;
-            position: relative; overflow: hidden;
-            display: flex; align-items: center;
-        }
- 
-        .hero-bg {
-            position: absolute; inset: 0;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 60%, #0a0a0a 100%);
-        }
- 
-        /* Grid de fondo metálico */
-        .hero-grid {
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(224,28,28,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(224,28,28,0.06) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridMove 20s linear infinite;
-        }
-        @keyframes gridMove {
-            from { background-position: 0 0; }
-            to { background-position: 60px 60px; }
-        }
- 
-        /* Engranaje decorativo */
-        .hero-gear {
-            position: absolute; right: -80px; top: 50%;
-            transform: translateY(-50%);
-            width: 650px; height: 650px;
-            opacity: 0.04;
-            animation: gearSpin 40s linear infinite;
-        }
-        @keyframes gearSpin { to { transform: translateY(-50%) rotate(360deg); } }
- 
-        .hero-content {
-            position: relative; z-index: 2;
-            padding: 0 60px;
-            max-width: 900px;
-        }
- 
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(224,28,28,0.12);
-            border: 1px solid rgba(224,28,28,0.4);
-            color: var(--red);
-            font-family: var(--font-head);
-            font-size: 13px; font-weight: 700; letter-spacing: 3px;
-            text-transform: uppercase;
-            padding: 8px 18px;
-            clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-            margin-bottom: 28px;
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        .hero-badge i { animation: pulse 1.5s ease infinite; }
-        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
- 
-        .hero-title {
-            font-family: var(--font-head);
-            font-size: clamp(58px, 8vw, 110px);
-            font-weight: 900;
-            line-height: 0.92;
-            letter-spacing: -1px;
-            text-transform: uppercase;
-            margin-bottom: 28px;
-            animation: fadeInUp 0.7s 0.1s ease both;
-        }
-        .hero-title .line-red { color: var(--red); display: block; }
-        .hero-title .line-outline {
-            -webkit-text-stroke: 2px rgba(255,255,255,0.25);
-            color: transparent; display: block;
-        }
- 
-        .hero-sub {
-            font-size: 18px; font-weight: 300; line-height: 1.7;
-            color: rgba(255,255,255,0.6);
-            max-width: 580px; margin-bottom: 44px;
-            animation: fadeInUp 0.7s 0.2s ease both;
-        }
- 
-        .hero-actions {
-            display: flex; gap: 16px; flex-wrap: wrap;
-            animation: fadeInUp 0.7s 0.3s ease both;
-        }
- 
-        .btn-red {
-            font-family: var(--font-head);
-            font-size: 16px; font-weight: 700; letter-spacing: 2px;
-            text-transform: uppercase; text-decoration: none;
-            background: var(--red); color: var(--white);
-            padding: 16px 36px;
-            clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-            border: none; cursor: none;
-        }
-        .btn-red:hover {
-            background: var(--red-dark);
-            box-shadow: 0 0 30px var(--red-glow);
-            transform: translateY(-2px);
-            color: var(--white);
-        }
- 
-        .btn-ghost {
-            font-family: var(--font-head);
-            font-size: 16px; font-weight: 700; letter-spacing: 2px;
-            text-transform: uppercase; text-decoration: none;
-            background: transparent; color: var(--white);
-            padding: 15px 36px;
-            border: 1.5px solid rgba(255,255,255,0.25);
-            clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-            transition: border-color 0.2s, color 0.2s;
-        }
-        .btn-ghost:hover { border-color: var(--red); color: var(--red); }
- 
-        /* Stats bar */
-        .hero-stats {
-            position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
-            display: flex;
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255,255,255,0.06);
-            animation: fadeInUp 0.8s 0.5s ease both;
-        }
-        .stat-item {
-            flex: 1; padding: 28px 40px;
-            border-right: 1px solid rgba(255,255,255,0.06);
-            text-align: center;
-        }
-        .stat-item:last-child { border-right: none; }
-        .stat-num {
-            font-family: var(--font-head);
-            font-size: 42px; font-weight: 900; color: var(--red);
-            line-height: 1;
-        }
-        .stat-label {
-            font-size: 13px; font-weight: 500;
-            color: rgba(255,255,255,0.45);
-            letter-spacing: 1px; text-transform: uppercase;
-            margin-top: 6px;
-        }
- 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
- 
-        /* ── MARQUEE ── */
-        .marquee-section {
-            background: var(--red);
-            padding: 14px 0; overflow: hidden;
-            border-top: 2px solid var(--red-dark);
-            border-bottom: 2px solid var(--red-dark);
-        }
-        .marquee-track {
-            display: flex; gap: 60px;
-            animation: marquee 20s linear infinite;
-            white-space: nowrap;
-        }
-        .marquee-item {
-            font-family: var(--font-head);
-            font-size: 14px; font-weight: 700; letter-spacing: 3px;
-            text-transform: uppercase; color: rgba(255,255,255,0.9);
-            display: flex; align-items: center; gap: 16px; flex-shrink: 0;
-        }
-        .marquee-item i { font-size: 10px; opacity: 0.7; }
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
- 
-        /* ── SECCIÓN SERVICIOS ── */
-        #servicios {
-            padding: 120px 60px;
-            background: var(--dark);
-        }
- 
-        .section-tag {
-            font-family: var(--font-head);
-            font-size: 13px; font-weight: 700; letter-spacing: 4px;
-            text-transform: uppercase; color: var(--red);
-            display: flex; align-items: center; gap: 12px;
-            margin-bottom: 16px;
-        }
-        .section-tag::before {
-            content: ''; display: block;
-            width: 32px; height: 2px; background: var(--red);
-        }
- 
-        .section-title {
-            font-family: var(--font-head);
-            font-size: clamp(40px, 5vw, 64px);
-            font-weight: 900; text-transform: uppercase;
-            line-height: 1; letter-spacing: -0.5px;
-            margin-bottom: 60px;
-        }
- 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2px;
-        }
- 
-        .service-card {
-            background: var(--dark2);
-            padding: 48px 40px;
-            position: relative; overflow: hidden;
-            transition: background 0.3s;
-        }
-        .service-card::before {
-            content: ''; position: absolute;
-            top: 0; left: 0; width: 3px; height: 0;
-            background: var(--red);
-            transition: height 0.4s ease;
-        }
-        .service-card:hover { background: #1e1e1e; }
-        .service-card:hover::before { height: 100%; }
- 
-        .service-icon {
-            width: 60px; height: 60px;
-            background: rgba(224,28,28,0.1);
-            border: 1px solid rgba(224,28,28,0.2);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 24px; color: var(--red);
-            margin-bottom: 24px;
-            clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
-            transition: background 0.3s, box-shadow 0.3s;
-        }
-        .service-card:hover .service-icon {
-            background: rgba(224,28,28,0.2);
-            box-shadow: 0 0 20px var(--red-glow);
-        }
- 
-        .service-title {
-            font-family: var(--font-head);
-            font-size: 22px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 1px;
-            margin-bottom: 12px; color: var(--white);
-        }
-        .service-desc { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; }
- 
-        .service-num {
-            position: absolute; right: 32px; bottom: 24px;
-            font-family: var(--font-head);
-            font-size: 72px; font-weight: 900;
-            color: rgba(255,255,255,0.03);
-            line-height: 1; pointer-events: none;
-        }
- 
-        /* ── PRODUCTOS ── */
-        #productos {
-            padding: 120px 60px;
-            background: var(--black);
-        }
- 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            margin-top: 60px;
-        }
- 
-        .product-card {
-            background: var(--dark2);
-            overflow: hidden;
-            position: relative;
-            border: 1px solid rgba(255,255,255,0.04);
-            transition: border-color 0.3s, transform 0.3s;
-        }
-        .product-card:hover {
-            border-color: rgba(224,28,28,0.3);
-            transform: translateY(-6px);
-        }
- 
-        .product-img {
-            height: 260px; overflow: hidden; position: relative;
-        }
-        .product-img img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            filter: grayscale(30%);
-        }
-        .product-card:hover .product-img img {
-            transform: scale(1.06);
-            filter: grayscale(0%);
-        }
-        .product-img::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--dark2) 0%, transparent 60%);
-        }
- 
-        .product-badge {
-            position: absolute; top: 16px; left: 16px; z-index: 2;
-            font-family: var(--font-head);
-            font-size: 11px; font-weight: 700; letter-spacing: 2px;
-            text-transform: uppercase;
-            background: var(--red); color: var(--white);
-            padding: 5px 12px;
-            clip-path: polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
-        }
- 
-        .product-body { padding: 28px 32px 32px; }
-        .product-title {
-            font-family: var(--font-head);
-            font-size: 24px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 0.5px;
-            margin-bottom: 10px; color: var(--white);
-        }
-        .product-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
- 
-        .product-features { list-style: none; margin-bottom: 28px; }
-        .product-features li {
-            font-size: 13px; color: rgba(255,255,255,0.55);
-            padding: 7px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex; align-items: center; gap: 10px;
-        }
-        .product-features li i { color: var(--red); font-size: 10px; }
- 
-        .btn-product {
-            display: block; text-align: center;
-            font-family: var(--font-head);
-            font-size: 14px; font-weight: 700; letter-spacing: 2px;
-            text-transform: uppercase; text-decoration: none;
-            color: var(--white);
-            padding: 14px;
-            border: 1.5px solid rgba(255,255,255,0.15);
-            clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
-            transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
-        }
-        .btn-product:hover {
-            background: var(--red);
-            border-color: var(--red);
-            box-shadow: 0 0 20px var(--red-glow);
-            color: var(--white);
-        }
- 
-        /* ── PROCESO ── */
-        #proceso {
-            padding: 120px 60px;
-            background: var(--dark);
-        }
- 
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0;
-            margin-top: 60px;
-            position: relative;
-        }
-        .process-steps::before {
-            content: ''; position: absolute;
-            top: 36px; left: 5%; right: 5%; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(224,28,28,0.4), transparent);
-        }
- 
-        .step {
-            text-align: center; padding: 0 24px;
-            position: relative;
-        }
- 
-        .step-num {
-            width: 72px; height: 72px; margin: 0 auto 24px;
-            background: var(--dark2);
-            border: 2px solid rgba(224,28,28,0.3);
-            display: flex; align-items: center; justify-content: center;
-            font-family: var(--font-head);
-            font-size: 28px; font-weight: 900; color: var(--red);
-            clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
-            position: relative; z-index: 1;
-            transition: background 0.3s, box-shadow 0.3s;
-        }
-        .step:hover .step-num {
-            background: rgba(224,28,28,0.1);
-            box-shadow: 0 0 24px var(--red-glow);
-        }
- 
-        .step-title {
-            font-family: var(--font-head);
-            font-size: 18px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 1px;
-            color: var(--white); margin-bottom: 10px;
-        }
-        .step-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; }
- 
-        /* ── TESTIMONIOS ── */
-        #testimonios {
-            padding: 120px 60px;
-            background: var(--black);
-            overflow: hidden;
-        }
- 
-        .testimonials-track {
-            display: flex; gap: 24px;
-            margin-top: 60px;
-            animation: slideTestimonials 30s linear infinite;
-        }
-        .testimonials-track:hover { animation-play-state: paused; }
-        @keyframes slideTestimonials {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
- 
-        .testimonial-card {
-            min-width: 380px;
-            background: var(--dark2);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 36px;
-            flex-shrink: 0;
-            position: relative;
-            transition: border-color 0.3s;
-        }
-        .testimonial-card:hover { border-color: rgba(224,28,28,0.3); }
- 
-        .stars { color: var(--red); margin-bottom: 16px; font-size: 14px; letter-spacing: 2px; }
-        .testimonial-text {
-            font-size: 15px; line-height: 1.8;
-            color: rgba(255,255,255,0.65);
-            margin-bottom: 24px;
-        }
-        .testimonial-text::before { content: '"'; font-size: 40px; color: var(--red); line-height: 0; vertical-align: -16px; margin-right: 4px; }
- 
-        .testimonial-author { display: flex; align-items: center; gap: 14px; }
-        .author-avatar {
-            width: 44px; height: 44px;
-            background: rgba(224,28,28,0.15);
-            border: 1px solid rgba(224,28,28,0.3);
-            clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
-            display: flex; align-items: center; justify-content: center;
-            font-family: var(--font-head);
-            font-weight: 900; color: var(--red); font-size: 16px;
-        }
-        .author-name { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--white); }
-        .author-role { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
- 
-        /* ── FORMULARIO ── */
-        #contacto {
-            padding: 120px 60px;
-            background: var(--dark);
-            position: relative; overflow: hidden;
-        }
-        #contacto::before {
-            content: ''; position: absolute;
-            top: -200px; right: -200px;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(224,28,28,0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
- 
-        .contact-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 80px; align-items: center;
-        }
- 
-        .contact-info { }
-        .contact-title {
-            font-family: var(--font-head);
-            font-size: clamp(40px, 4vw, 60px);
-            font-weight: 900; text-transform: uppercase;
-            line-height: 1; margin-bottom: 24px;
-        }
-        .contact-title span { color: var(--red); }
- 
-        .contact-desc {
-            font-size: 16px; color: rgba(255,255,255,0.5);
-            line-height: 1.8; margin-bottom: 44px;
-        }
- 
-        .contact-items { list-style: none; }
-        .contact-items li {
-            display: flex; align-items: center; gap: 16px;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 15px; color: rgba(255,255,255,0.6);
-        }
-        .contact-items li i {
-            width: 40px; height: 40px;
-            background: rgba(224,28,28,0.1);
-            border: 1px solid rgba(224,28,28,0.2);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--red); font-size: 15px;
-            clip-path: polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);
-            flex-shrink: 0;
-        }
- 
-        /* Form */
-        .contact-form { background: var(--dark2); padding: 48px; border: 1px solid rgba(255,255,255,0.05); }
-        .form-title {
-            font-family: var(--font-head);
-            font-size: 28px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 1px;
-            margin-bottom: 32px; color: var(--white);
-        }
- 
-        .form-group { margin-bottom: 20px; }
-        .form-label {
-            display: block;
-            font-family: var(--font-head);
-            font-size: 12px; font-weight: 700; letter-spacing: 2px;
-            text-transform: uppercase; color: rgba(255,255,255,0.4);
-            margin-bottom: 8px;
-        }
-        .form-input, .form-select, .form-textarea {
-            width: 100%;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--white);
-            padding: 14px 18px;
-            font-family: var(--font-body);
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.2s, background 0.2s;
-            clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
-        }
-        .form-select { cursor: none; }
-        .form-textarea { resize: vertical; min-height: 100px; }
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            border-color: rgba(224,28,28,0.6);
-            background: rgba(224,28,28,0.04);
-        }
-        .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.2); }
-        .form-select option { background: var(--dark2); color: var(--white); }
- 
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
- 
-        .btn-submit {
-            width: 100%;
-            font-family: var(--font-head);
-            font-size: 16px; font-weight: 800; letter-spacing: 3px;
-            text-transform: uppercase;
-            background: var(--red); color: var(--white);
-            border: none; padding: 18px;
-            clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
-            cursor: none;
-            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-            margin-top: 8px;
-        }
-        .btn-submit:hover {
-            background: var(--red-dark);
-            box-shadow: 0 0 30px var(--red-glow);
-            transform: translateY(-2px);
-        }
- 
-        /* Success message */
-        .form-success {
-            display: none; text-align: center; padding: 40px 0;
-        }
-        .form-success i { font-size: 56px; color: #22c55e; margin-bottom: 16px; }
-        .form-success h4 {
-            font-family: var(--font-head); font-size: 28px; font-weight: 800;
-            text-transform: uppercase; color: var(--white); margin-bottom: 8px;
-        }
-        .form-success p { color: rgba(255,255,255,0.5); font-size: 15px; }
- 
-        /* ── FOOTER ── */
-        footer {
-            background: var(--black);
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 60px;
-        }
- 
-        .footer-grid {
-            display: grid; grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px; margin-bottom: 48px;
-        }
-        .footer-brand { }
-        .footer-logo {
-            font-family: var(--font-head);
-            font-size: 28px; font-weight: 900;
-            color: var(--white); margin-bottom: 16px;
-        }
-        .footer-logo span { color: var(--red); }
-        .footer-about { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.8; max-width: 300px; }
- 
-        .footer-col-title {
-            font-family: var(--font-head);
-            font-size: 14px; font-weight: 700;
-            letter-spacing: 3px; text-transform: uppercase;
-            color: rgba(255,255,255,0.3); margin-bottom: 20px;
-        }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a {
-            font-size: 15px; color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .footer-links a:hover { color: var(--red); }
- 
-        .footer-bottom {
-            display: flex; justify-content: space-between; align-items: center;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            font-size: 13px; color: rgba(255,255,255,0.25);
-        }
-        .footer-bottom strong { color: var(--red); }
- 
-        /* ── WA FLOAT ── */
-        .wa-float {
-            position: fixed; bottom: 36px; right: 36px; z-index: 500;
-            width: 58px; height: 58px;
-            background: #25d366;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 26px; color: var(--white);
-            text-decoration: none;
-            clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
-            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-        }
-        .wa-float:hover {
-            background: #1da851;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(37,211,102,0.5);
-            color: var(--white);
-        }
-        .wa-pulse {
-            position: absolute; inset: -6px;
-            border-radius: 0;
-            border: 2px solid rgba(37,211,102,0.5);
-            clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
-            animation: waPulse 2s ease infinite;
-        }
-        @keyframes waPulse {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.3); opacity: 0; }
-        }
- 
-        /* ── REVEAL ANIMATION ── */
-        .reveal {
-            opacity: 0; transform: translateY(40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
- 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            nav, #servicios, #productos, #proceso, #testimonios, #contacto, footer { padding-left: 32px; padding-right: 32px; }
-            .hero-content { padding: 0 32px; }
-            .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .hero-stats .stat-item { padding: 20px 16px; }
-            .stat-num { font-size: 32px; }
-            .process-steps::before { display: none; }
-        }
-        @media (max-width: 768px) {
-            nav { padding: 18px 24px; }
-            nav.scrolled { padding: 14px 24px; }
-            .nav-links { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.97); flex-direction: column; justify-content: center; align-items: center; gap: 36px; z-index: 999; }
-            .nav-links.open { display: flex; }
-            .nav-links a { font-size: 28px; }
-            .hamburger { display: flex; z-index: 1000; position: relative; }
-            .hero-content { padding: 0 24px; }
-            #servicios, #productos, #proceso, #testimonios, #contacto, footer { padding: 80px 24px; }
-            .hero-stats { flex-wrap: wrap; }
-            .stat-item { min-width: 50%; }
-            .footer-grid { grid-template-columns: 1fr; gap: 36px; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-            .form-row { grid-template-columns: 1fr; }
-            .contact-form { padding: 32px 24px; }
-        }
-    </style>
+    
+    <!-- Hoja de estilos externa -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
  
@@ -902,9 +132,15 @@
     <section id="productos">
         <div class="section-tag reveal">Catálogo Premium</div>
         <h2 class="section-title reveal reveal-delay-1">Productos con<br>disponibilidad inmediata</h2>
+        <div class="catalog-filters reveal reveal-delay-2">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="inyectores">Inyectores</button>
+            <button class="filter-btn" data-filter="bombas">Bombas</button>
+            <button class="filter-btn" data-filter="kits">Repuestos</button>
+        </div>
         <div class="products-grid">
             <!-- Producto 1 -->
-            <div class="product-card reveal">
+            <div class="product-card reveal" data-filter="inyectores">
                 <div class="product-img">
                     <span class="product-badge">Más Vendido</span>
                     <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;top:0;left:0;background:#111">
@@ -966,7 +202,7 @@
                       <ellipse cx="434" cy="207" rx="6" ry="2" fill="#e01c1c" opacity="0.2"/>
                       <!-- Label -->
                       <text x="300" y="245" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="rgba(255,255,255,0.18)" text-transform="uppercase">COMMON RAIL INJECTORS</text>
-                    </svg>
+                     </svg>
                 </div>
                 <div class="product-body">
                     <div class="product-title">Inyectores Common Rail</div>
@@ -976,11 +212,11 @@
                         <li><i class="fa-solid fa-caret-right"></i> Garantía de 6 meses por escrito</li>
                         <li><i class="fa-solid fa-caret-right"></i> Calibración computarizada incluida</li>
                     </ul>
-                    <a href="#contacto" class="btn-product">Solicitar Cotización</a>
+                    <a href="#" class="btn-product" data-product="Inyectores Common Rail" onclick="openWhatsApp(event, this)">Solicitar Cotización</a>
                 </div>
             </div>
             <!-- Producto 2 -->
-            <div class="product-card reveal reveal-delay-1">
+            <div class="product-card reveal reveal-delay-1" data-filter="bombas">
                 <div class="product-img">
                     <span class="product-badge" style="background:#333">Alta Demanda</span>
                     <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;top:0;left:0;background:#111">
@@ -1050,11 +286,11 @@
                         <li><i class="fa-solid fa-caret-right"></i> Prueba de banco certificada</li>
                         <li><i class="fa-solid fa-caret-right"></i> Adaptable a múltiples marcas</li>
                     </ul>
-                    <a href="#contacto" class="btn-product">Solicitar Cotización</a>
+                    <a href="#" class="btn-product" data-product="Bombas de Alta Presión" onclick="openWhatsApp(event, this)">Solicitar Cotización</a>
                 </div>
             </div>
             <!-- Producto 3 -->
-            <div class="product-card reveal reveal-delay-2">
+            <div class="product-card reveal reveal-delay-2" data-filter="kits">
                 <div class="product-img">
                     <span class="product-badge" style="background:#2a5c2a">Económico</span>
                     <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;top:0;left:0;background:#111">
@@ -1126,7 +362,7 @@
                         <li><i class="fa-solid fa-caret-right"></i> Kits completos para cada modelo</li>
                         <li><i class="fa-solid fa-caret-right"></i> Envío exprés disponible</li>
                     </ul>
-                    <a href="#contacto" class="btn-product">Solicitar Cotización</a>
+                    <a href="#" class="btn-product" data-product="Kits de Reparación" onclick="openWhatsApp(event, this)">Solicitar Cotización</a>
                 </div>
             </div>
         </div>
@@ -1250,7 +486,60 @@
             </div>
         </div>
     </section>
- 
+
+    <!-- ── ASISTENTE DE DIAGNÓSTICO ── -->
+    <section id="diagnostico-interactivo">
+        <div class="diagnostico-container">
+            <div class="diagnostico-header reveal">
+                <div class="section-tag">¿Tu motor falla?</div>
+                <h2 class="section-title" style="margin-bottom:20px">Diagnóstico<br><span style="color:var(--red)">Inteligente</span></h2>
+                <p class="diagnostico-intro">Selecciona el síntoma de tu motor y te diremos cuál podría ser el problema. Sin rodeos, sin teoría.</p>
+            </div>
+            <div class="diagnostico-box reveal reveal-delay-1">
+                <!-- Step 1: Síntoma -->
+                <div class="diag-step active" id="diagStep1">
+                    <div class="diag-step-title">¿Qué falla presenta?</div>
+                    <div class="diag-options">
+                        <div class="diag-opt" onclick="diagSelect('humo')">
+                            <i class="fa-solid fa-smog"></i>
+                            <span>Humo negro / excesivo</span>
+                        </div>
+                        <div class="diag-opt" onclick="diagSelect('potencia')">
+                            <i class="fa-solid fa-gauge-low"></i>
+                            <span>Pérdida de potencia</span>
+                        </div>
+                        <div class="diag-opt" onclick="diagSelect('arranque')">
+                            <i class="fa-solid fa-engine-warning"></i>
+                            <span>Arranque difícil en frío</span>
+                        </div>
+                        <div class="diag-opt" onclick="diagSelect('ruido')">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>Cascabeleo / ruido anormal</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 2: Resultado -->
+                <div class="diag-step" id="diagStep2">
+                    <div class="diag-result-card">
+                        <div class="diag-result-icon"><i class="fa-solid fa-wrench"></i></div>
+                        <div class="diag-result-title" id="diagResultTitle">Posible Falla</div>
+                        <div class="diag-result-desc" id="diagResultDesc">Diagnóstico estimado basado en los síntomas reportados.</div>
+                        <div class="diag-summary" id="diagSummary">
+                            <p><strong>Síntoma:</strong> <span id="diagSintoma"></span></p>
+                            <p><strong>Recomendación:</strong> <span id="diagRecomendacion">Te sugerimos una revisión profesional para confirmar.</span></p>
+                        </div>
+                        <div class="diag-actions">
+                            <a href="https://wa.me/5215512345678" target="_blank" class="btn-red" style="display:inline-flex;align-items:center;gap:8px;font-size:14px">
+                                <i class="fa-brands fa-whatsapp"></i> Cotizar Reparación
+                            </a>
+                            <button class="btn-back" onclick="diagReset()"><i class="fa-solid fa-arrow-left"></i> Volver a empezar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── CONTACTO ── -->
     <section id="contacto">
         <div class="contact-grid">
@@ -1340,96 +629,13 @@
         </div>
     </footer>
  
-    <!-- ── WA FLOAT ── -->
+    <!-- ── WA FLOAT (ROJO) ── -->
     <a href="https://wa.me/5215512345678" target="_blank" class="wa-float" title="Contactar por WhatsApp">
-        <div class="wa-pulse"></div>
+        <div class="wa-pulse" style="border-color:var(--red-glow)"></div>
         <i class="fa-brands fa-whatsapp"></i>
     </a>
  
-    <script>
-        // ── Cursor ──
-        const cursor = document.getElementById('cursor');
-        const ring = document.getElementById('cursorRing');
-        let mx = 0, my = 0, rx = 0, ry = 0;
-        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
-        function animRing() { rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
-        animRing();
- 
-        // ── Nav scroll ──
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
- 
-        // ── Hamburger ──
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
- 
-        // ── Counter animation ──
-        function animateCounter(el) {
-            const target = parseInt(el.dataset.count);
-            let current = 0;
-            const step = Math.ceil(target / 60);
-            const timer = setInterval(() => {
-                current = Math.min(current + step, target);
-                el.textContent = current.toLocaleString() + (el.dataset.count == '98' ? '%' : '+');
-                if (current >= target) clearInterval(timer);
-            }, 25);
-        }
- 
-        // ── Reveal on scroll ──
-        const revealEls = document.querySelectorAll('.reveal');
-        const statsEls = document.querySelectorAll('[data-count]');
-        let statsAnimated = false;
- 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
- 
-        revealEls.forEach(el => observer.observe(el));
- 
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !statsAnimated) {
-                    statsAnimated = true;
-                    statsEls.forEach(el => animateCounter(el));
-                }
-            });
-        }, { threshold: 0.5 });
- 
-        if (statsEls.length) statsObserver.observe(statsEls[0]);
- 
-        // ── Form submit ──
-        function submitForm() {
-            const nombre = document.getElementById('inputNombre').value.trim();
-            const tel = document.getElementById('inputTel').value.trim();
-            const servicio = document.getElementById('inputServicio').value;
-            if (!nombre || !tel || !servicio) {
-                document.getElementById('inputNombre').style.borderColor = nombre ? '' : 'rgba(224,28,28,0.8)';
-                document.getElementById('inputTel').style.borderColor = tel ? '' : 'rgba(224,28,28,0.8)';
-                document.getElementById('inputServicio').style.borderColor = servicio ? '' : 'rgba(224,28,28,0.8)';
-                return;
-            }
-            const btn = document.getElementById('btnSubmit');
-            btn.textContent = 'Enviando...';
-            btn.disabled = true;
-            setTimeout(() => {
-                document.getElementById('contactForm').querySelector('.form-title').style.display = 'none';
-                document.getElementById('contactForm').querySelectorAll('.form-group, .form-row, .btn-submit').forEach(el => el.style.display = 'none');
-                document.getElementById('formSuccess').style.display = 'block';
-            }, 1200);
-        }
- 
-        // Quitar borde rojo al escribir
-        document.querySelectorAll('.form-input').forEach(el => {
-            el.addEventListener('input', () => el.style.borderColor = '');
-        });
-    </script>
+    <!-- Script externo -->
+    <script src="js/script.js"></script>
 </body>
 </html>
