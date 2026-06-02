@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialistas en Inyectores y Bombas Diésel | México</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --dark-color: #1a1a1a;
+            --bg-light: #f4f6f9;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        .section-padding { padding: 80px 0; }
+        .section-title-line {
+            height: 4px;
+            width: 70px;
+            background-color: var(--primary-color);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* --- Estilos del Slider (Hero Carousel) --- */
+        .hero-carousel {
+            height: 100vh;
+            min-height: 600px;
+        }
+        
+        .carousel-item {
+            height: 100vh;
+            min-height: 600px;
+            background-color: var(--dark-color);
+        }
+
+        .carousel-item::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7); /* Filtro oscuro para leer el texto */
+            z-index: 1;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .carousel-caption {
+            z-index: 2;
+            top: 50%;
+            transform: translateY(-50%);
+            bottom: auto;
+        }
+
+        /* Botones personalizados */
+        .btn-primary-custom {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #b71c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(211, 47, 47, 0.4);
+            color: white;
+        }
+
+        /* Tarjetas de Productos */
+        .hover-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            background-color: #ffffff;
+        }
+        .hover-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        /* Respaldo gris si la imagen no carga */
+        .card-img-top {
+            height: 240px; 
+            object-fit: cover;
+            background-color: #e9ecef;
+        }
+
+        /* Formulario Lead */
+        .lead-section {
+            background: linear-gradient(135deg, var(--dark-color) 0%, #333 100%);
+            color: white;
+        }
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="#">
+                <i class="fa-solid fa-gear text-danger me-2"></i>Diesel<span class="text-danger">Mex</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#productos">Catálogo</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-danger text-white ms-lg-4 px-4 rounded-pill fw-bold" href="#contacto">Cotizar Ahora</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Ahora es un Slider Automático) -->
+    <header id="inicio">
+        <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+            
+            <div class="carousel-indicators" style="z-index: 5;">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner h-100">
+                
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1920&q=80" class="carousel-image" alt="Motor Diesel de alta potencia">
+                    <div class="carousel-caption">
+                        <div class="container text-center">
+                            <span class="badge bg-danger mb-3 px-3 py-2 fs-6 rounded-pill">Soluciones Especializadas para Flotillas</span>
+                            <h1 class="display-3 fw-bold mb-4 text-white">Potencia, Precisión y Rendimiento</h1>
+                            <p class="lead mb-5 fs-4 mx-auto text-light" style="max-width: 800px;">Expertos en venta, reparación y calibración computarizada de inyectores y bombas diésel.</p>
+                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                <a href="#contacto" class="btn btn-primary-custom btn-lg rounded-pill shadow">Obtener Diagnóstico Gratuito</a>
+                                <a href="#productos" class="btn btn-outline-light btn-lg rounded-pill">Ver Productos Estrella</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1920&q=80" class="carousel-image" alt="Laboratorio de inyección diésel">
+                    <div class="carousel-caption">
+                        <div class="container text-center">
+                            <span class="badge bg-danger mb-3 px-3 py-2 fs-6 rounded-pill">Garantía por Escrito</span>
+                            <h1 class="display-3 fw-bold mb-4 text-white">Laboratorio Diésel Avanzado</h1>
+                            <p class="lead mb-5 fs-4 mx-auto text-light" style="max-width: 800px;">Bancos de prueba de última generación para asegurar que cada pieza cumpla con los estándares originales.</p>
+                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                <a href="#contacto" class="btn btn-primary-custom btn-lg rounded-pill shadow">Cotizar Servicio Técnico</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1486262715619-670810aa70f2?auto=format&fit=crop&w=1920&q=80" class="carousel-image" alt="Refacciones y Componentes Diésel">
+                    <div class="carousel-caption">
+                        <div class="container text-center">
+                            <span class="badge bg-danger mb-3 px-3 py-2 fs-6 rounded-pill">Envíos a todo México</span>
+                            <h1 class="display-3 fw-bold mb-4 text-white">Refacciones con Disponibilidad Inmediata</h1>
+                            <p class="lead mb-5 fs-4 mx-auto text-light" style="max-width: 800px;">Inyectores Common Rail, bombas de alta presión y kits de reparación listos para envío inmediato.</p>
+                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                <a href="#productos" class="btn btn-primary-custom btn-lg rounded-pill shadow">Explorar Catálogo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" style="z-index: 5;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" style="z-index: 5;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Productos Estrella (Imágenes Corregidas) -->
+    <section id="productos" class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-danger fw-bold text-uppercase">Catálogo Premium</span>
+                <h2 class="fw-bold display-5">Nuestros Productos Estrella</h2>
+                <div class="section-title-line"></div>
+                <p class="text-muted fs-5">Las refacciones más demandadas con disponibilidad inmediata en todo México.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Producto 1 -->
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card hover-card h-100 rounded-4 overflow-hidden">
+                        <!-- Enlace de imagen actualizado -->
+                        <img src="https://images.unsplash.com/photo-1632245889029-e406faaa34cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Inyector Common Rail" onerror="this.src='https://via.placeholder.com/600x400?text=Imagen+No+Disponible'">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <span class="badge bg-dark mb-2 w-25">Más vendido</span>
+                            <h4 class="card-title fw-bold">Inyectores Common Rail</h4>
+                            <p class="card-text text-muted mb-4">Máxima eficiencia en pulverización. Contamos con piezas nuevas y reconstruidas con garantía para maquinaria pesada y transporte ligero.</p>
+                            <a href="#contacto" class="btn btn-danger mt-auto fw-bold w-100 rounded-pill">Solicitar Cotización</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card hover-card h-100 rounded-4 overflow-hidden">
+                        <!-- Enlace de imagen actualizado -->
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Bombas de Inyección" onerror="this.src='https://via.placeholder.com/600x400?text=Imagen+No+Disponible'">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <span class="badge bg-dark mb-2 w-25">Alta Demanda</span>
+                            <h4 class="card-title fw-bold">Bombas de Alta Presión</h4>
+                            <p class="card-text text-muted mb-4">Recupera la presión exacta del sistema. Bombas calibradas y listas para instalar, eliminando fallos de arranque y pérdida de potencia.</p>
+                            <a href="#contacto" class="btn btn-danger mt-auto fw-bold w-100 rounded-pill">Solicitar Cotización</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card hover-card h-100 rounded-4 overflow-hidden">
+                        <!-- Enlace de imagen actualizado -->
+                        <img src="https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Kits de Reparación" onerror="this.src='https://via.placeholder.com/600x400?text=Imagen+No+Disponible'">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <span class="badge bg-dark mb-2 w-25">Económico</span>
+                            <h4 class="card-title fw-bold">Kits de Reparación</h4>
+                            <p class="card-text text-muted mb-4">Toberas, válvulas de control y juegos de empaques de calidad OEM. La solución ideal si cuentas con tu propio taller mecánico.</p>
+                            <a href="#contacto" class="btn btn-danger mt-auto fw-bold w-100 rounded-pill">Solicitar Cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Captura de Leads -->
+    <section id="contacto" class="section-padding lead-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                    <h2 class="display-5 fw-bold mb-4">¿Listo para optimizar tu motor?</h2>
+                    <p class="lead mb-4 opacity-75">Déjanos tus datos. Un especialista se pondrá en contacto contigo en menos de 30 minutos para asesorarte sin compromiso.</p>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="card shadow-lg border-0 rounded-4 p-4 p-md-5 text-dark bg-white">
+                        <h4 class="fw-bold mb-4 text-center">Solicita tu Cotización Rápida</h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label text-muted fw-bold small">Nombre Completo</label>
+                                    <input type="text" class="form-control form-control-lg bg-light" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label text-muted fw-bold small">Teléfono / WhatsApp</label>
+                                    <input type="tel" class="form-control form-control-lg bg-light" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label text-muted fw-bold small">¿Qué estás buscando?</label>
+                                <select class="form-select form-select-lg bg-light">
+                                    <option selected disabled>Selecciona una opción...</option>
+                                    <option value="1">Inyectores Common Rail</option>
+                                    <option value="2">Bombas de Alta Presión</option>
+                                    <option value="3">Kits de Reparación / Refacciones</option>
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-danger btn-lg rounded-pill fw-bold fs-5">Enviar Solicitud</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="#" class="whatsapp-float" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 120,
+            duration: 800
+        });
+    </script>
+</body>
+</html>
